@@ -1,2 +1,2 @@
 # OPF-Tutorial
-Optimal power flow tutorial for islanded and grid connected microgrid using OpenDSS, Pyomo, and IPOPT. 
+Optimal Power Flow for Unbalanced Three-Phase Microgrids Using Interior Point Optimizer, IPOPT
