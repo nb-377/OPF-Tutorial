@@ -14,8 +14,7 @@ Required Software:
 3. Pyomo: Optimization package: https://pyomo.readthedocs.io/en/stable/ or use “conda install -c conda-forge pyomo” Please see https://anaconda.org/conda-forge/pyomofor more detail. 
 
 4. IPOPT: Optimization solver: https://coin-or.github.io/Ipopt/   conda install -c conda-forge/label/cf201901 ipopt
-Please see https://anaconda.org/conda-forge/ipoptfor more detail. To verify IPOPT is installed properly, navigate to your working directory in the terminal. Type ‘pyomo help -s’. This command will list all installed solvers and their versions. Scroll through the output to locate IPOPT, which if correctly installed will have a ‘+’ in from of its listing and version 3.11.1 listed. ![image](https://user-images.githubusercontent.com/99694417/154360314-321266ff-50bb-434c-bbb3-82c1cd7e1e71.png)
-
+Please see https://anaconda.org/conda-forge/ipoptfor more detail. To verify IPOPT is installed properly, navigate to your working directory in the terminal. Type ‘pyomo help -s’. This command will list all installed solvers and their versions. Scroll through the output to locate IPOPT, which if correctly installed will have a ‘+’ in from of its listing and version 3.11.1 listed. 
 
 5. DSS-python: https://pypi.org/project/dss-python/ (replaces win32 COM interface discussed in user docs)
 
