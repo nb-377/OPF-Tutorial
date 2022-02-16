@@ -20,7 +20,6 @@ class Object(object):                                                       # se
     pass                                                                    # do nothing
 
 # set the path to you OpenDSS file here:
-# dssFileName = r'C:\Users\nicho\OneDrive - The University of Texas at Austin\Desktop\Research\OPF Nanogrid\OPF Nanogrid Tutorial\OpenDSS Files\Nanogrid.dss'
 dssFileName = r'C:\Users\nicho\OneDrive - The University of Texas at Austin\Desktop\Research\OPF Nanogrid\OPF Nanogrid Tutorial\OpenDSS Files\islanded_charging_git.dss'
 
 #------------------------------ Load system and extract admittance matrix---------------------------------------------#
