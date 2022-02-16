@@ -1,0 +1,92 @@
+!This openDSS script is the islanded microgrid .dss file for use in the OPF tutorial
+! Written by Nicholas Barry, 2/16/2022
+        
+Clear       
+
+! set editor to notepad++  
+Set Editor= 'C:\Program Files (x86)\Notepad++\Notepad++.exe'
+        
+!Define circuit     
+New Circuit.Nano_Improved phases=3 basekv=.208 mvasc1=0.336  
+
+!change this data path to the local directory for the solar and load shape .csv files 
+Set Datapath= "C:\Users\nicho\OneDrive - The University of Texas at Austin\Desktop\Research\OPF Nanogrid\OPF Nanogrid Tutorial\OpenDSS Files"  
+
+Set DefaultBaseFrequency=60 
+Set earthmodel=Carson            
+       
+!Lines**************************************************************************************************************************************************************
+ 
+New Line.Line1 phases=1 length=100 units=ft bus1=sourcebus bus2=bus_3.1  r1= 0.00585 r0=0.00585  x1=8.91E-6 x0= 8.91E-6 c1=0 c0=0   
+ 
+New Line.Line2 phases=3 length=100 units=ft bus1=sourcebus bus2=bus_1  r1= 0.0091 r0=0.0091  x1=3.01E-5 x0= 3.01E-5 c1=0 c0=0 
+
+New Line.Line3 phases=3 length=100 units=ft bus1=sourcebus bus2=bus_2 r1= 0.00013 r0=0.00013  x1=4.22E-6 x0= 4.22E-6 c1=0 c0=0  
+
+New Line.Line4 phases=1 length=100 units=ft bus1=bus_3 bus2=bus_2.1  r1= 0.00585 r0=0.00585  x1=8.91E-6 x0= 8.91E-6 c1=0 c0=0  
+
+New Line.Line5 phases=3 length=100 units=ft bus1=bus_2 bus2=bus_1  r1= 0.00585 r0=0.00585  x1=8.91E-6 x0= 8.91E-6 c1=0 c0=0  
+
+New Line.Line6 phases=1 length=100 units=ft bus1=bus_3 bus2=bus_1.1  r1= 0.00585 r0=0.00585  x1=8.91E-6 x0= 8.91E-6 c1=0 c0=0   
+
+
+!Load Shapes*******************************************************************************************************************************************************
+!New LoadShape.load_2_A npts=10080 minterval=1 mult=(File=loadshape.csv, Column=1, Header=Yes) qmult=[File=loadshape.csv, Column=2, Header=Yes]
+!New LoadShape.load_2_B npts=10080 minterval=1 mult=(File=loadshape.csv, Column=3, Header=Yes) qmult=[File=loadshape.csv, Column=4, Header=Yes]
+!New LoadShape.load_2_C npts=10080 minterval=1 mult=(File=loadshape.csv, Column=5, Header=Yes) qmult=[File=loadshape.csv, Column=6, Header=Yes]
+!New LoadShape.load_1_A  npts=10080  minterval=1 mult=(File=loadshape.csv, Column=7, Header=Yes) qmult=[File=loadshape.csv, Column=8, Header=Yes] 
+!New LoadShape.load_1_B  npts=10080  minterval=1 mult=(File=loadshape.csv, Column=9, Header=Yes) qmult=[File=loadshape.csv, Column=10, Header=Yes] 
+!New LoadShape.load_1 npts=10080  minterval=1 mult=(File=loadshape.csv, Column=11, Header=Yes) qmult=[File=loadshape.csv, Column=12, Header=Yes] 
+!New LoadShape.load_3 npts=10080  minterval=1 mult=(File=loadshape.csv, Column=13, Header=Yes) qmult=[File=loadshape.csv, Column=14, Header=Yes] 
+ 
+
+! PV Generator**************************************************************************************************************************************************************************
+
+New PVSystem.PV_A bus1=bus_2.1 phases=1 conn=wye kv=0.120 Pmpp=8 kva= 25
+~ kvar=1.49 irrad=0.20 Vminpu=0.95 Vmaxpu=10 %cutin=0 %cutout=0 
+
+New PVSystem.PV_B bus1=bus_2.2 phases=1 conn=wye kv=0.120 Pmpp=8 kva= 25
+~ kvar=1.25 irrad=0.17875 Vminpu=0.95 Vmaxpu=10 %cutin=0 %cutout=0  
+
+New PVSystem.PV_C bus1=bus_2.3 phases=1 conn=wye kv=0.120 Pmpp=8 kva= 25 
+~ kvar=1.56 irrad=0.1875 Vminpu=0.95 Vmaxpu=10 %cutin=0 %cutout=0 
+
+ !Storage System
+New Storage.ESS_A bus1=sourcebus.1 phases=1  kV=0.120 kWrated=25 kva=50 state=discharging  kw=2.17 kvar=0.0
+~ kWhrated=10 %stored=90 %reserve=0 %EffCharge=100 %EffDischarge=100 %IdlingkW=0 vmaxpu=2 vminpu=0.95
+
+New Storage.ESS_B bus1=sourcebus.2 phases=1 kV=0.120 kWrated=25 kva=50 state=discharging kw=1.25 kvar=0.0
+~ kWhrated=10 %stored=90 %reserve=0 %EffCharge=100 %EffDischarge=100 %IdlingkW=0 vmaxpu=2 vminpu=0.95
+
+New Storage.ESS_C bus1=sourcebus.3 phases=1 kV=0.120 kWrated=25 kva=50 state=discharging kw=1.66 kvar=0.0
+~ kWhrated=10 %stored=90 %reserve=0 %EffCharge=100 %EffDischarge=100 %IdlingkW=0 vmaxpu=2 vminpu=0.95
+
+
+!Loads**************************************************************************************************************************************************************************************
+ 
+!Plans Load 
+New Load.load_2_A bus1=bus_2.1 phases=1 kv=.120 conn=wye  kW=.985 kVAR=.47706 model=1 vminpu=0.95 vmaxpu=1.05
+New Load.load_2_B bus1=bus_2.2 phases=1 kv=.120 conn=wye  kW=1.00932 kVAR=.50951 model=1 vminpu=0.95 vmaxpu=1.05
+New Load.load_2_C bus1=bus_2.3 phases=1 kv=.120 conn=wye  kW=1.02315 kVAR=0.48649 model=1 vminpu=0.95 vmaxpu=1.05
+
+!TOC Load 
+New Load.load_1_A bus1=bus_1.1 phases=1 kv=.120 conn=wye  kW=1.485 kVAR=0.71922 model=1 vminpu=0.95 vmaxpu=1.05 
+New Load.load_1_B bus1=bus_1.2 phases=1 kv=.120 conn=wye  kW=1.59026 kVAR=0.74087 model=1 vminpu=0.95 vmaxpu=1.05 
+New Load.load_1_C bus1=bus_1.3 phases=1 kv=.120 conn=wye  kW=1.99332 kVAR=1.07066 model=1 vminpu=0.95 vmaxpu=1.05 
+
+!coms Load 
+New Load.load_3 bus1= bus_3 phases=1 kv=.120 conn=wye  kW=1.2 kVAR=0.290595 model=1 vminpu=0.95  vmaxpu=1.05 
+
+
+ 
+!Solve Circuit********************************************************************************************************************************************************************************
+ 
+Set VoltageBases=[.208]
+ 
+  
+!Showing results ***********************************************************************************************************************************
+calcv
+solve 
+show voltage ln nodes
+show powers KVA elements
+
