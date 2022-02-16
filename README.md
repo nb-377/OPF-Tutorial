@@ -1,2 +1,5 @@
 # OPF-Tutorial
 Optimal Power Flow for Unbalanced Three-Phase Microgrids Using Interior Point Optimizer, IPOPT
+
+
+This work provides a tutorial on formulating and solving optimal power flow (OPF) problems for grid-connected and islanded, unbalanced, three-phase microgrids using an open-source software package. Because of its robustness and ease of use, this paper adopts the IPOPT solver package implemented in Python using PYOMO to formulate the OPF problem. Optimal management of photovoltaic generation and energy storage during islanded and grid-connected operations are used as illustrative OPF problems. Formulation of OPF variables, constraints, objectives, and solutions for snapshot and quasi-static time series simulation implemented in PYOMO will be presented and explained in detail, along with Python code snippets. The IPOPT solver solution of a multi-hour simulation horizon demonstrating optimized operational endurance of a multi-phase, islanded, and unbalanced microgrid will be presented. Methods to validate an IPOPT solution using OpenDSS, an open-source power systems distribution system simulation software, will also be demonstrated.
