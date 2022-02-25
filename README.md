@@ -35,7 +35,7 @@ OPF_Tutorial_islanded_git.py: This python file demonstrates the islanded microgr
 islanded_charging_git.dss: This is the OpenDSS file for section IV C. 
 OPF_Tutorial_charging_git.py: This is the python file for the charging of the ESS while islanded, from Section IV C. 
 
-OPF_Tutorial_QSTS_git: This is the Python file for the QSTS siualtion in Section IV D. 
+OPF_Tutorial_QSTS_git: This is the Python file for the QSTS simulation in Section IV D. 
 
 Note: 
 The loadshape.csv and Solar Data.csv files are required by OpenDSS for all simulations. Ensure to update local directories once installed.
