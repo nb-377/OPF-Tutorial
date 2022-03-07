@@ -19,7 +19,9 @@ Please see https://anaconda.org/conda-forge/ipoptfor more detail. To verify IPOP
 5. DSS-python: https://pypi.org/project/dss-python/ (replaces win32 COM interface discussed in user docs)
 
 6. Open DSS: https://sourceforge.net/projects/electricdss/ 
- 
+
+7. Notepad ++: This software is used for the improved readability of OpenDSS results. It is available from: https://notepad-plus-plus.org/downloads/.
+
 Directory: 
 
 loadshape.csv: This is the load shape file for the microgrid loads.
