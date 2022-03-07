@@ -203,7 +203,7 @@ obj = 'feasible'                                                           #Decl
 irrad = .20                                                                 # set irradiance level (1.0-0.0, percent of rated value)
 
 # pull in load shapes from the same source file used by OpenDSS
-load = pd.read_csv(r"C:\Users\nicho\OneDrive - The University of Texas at Austin\Desktop\Research\OPF Nanogrid\OpenDSS Files\TOC_Loadshape.csv")
+load = pd.read_csv(r"C:\Users\nicho\OneDrive - The University of Texas at Austin\Desktop\Research\OPF Nanogrid\OpenDSS Files\Loadshape.csv")
 
 # Splice imported load shapes for each of the three loads, real and reactive.
 load_2_P_A = load.iloc[:, 0].values
