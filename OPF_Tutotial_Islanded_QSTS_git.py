@@ -767,15 +767,13 @@ while ES.SOC_updated > 0.05:
     print("Timestep " + str(it))                                               # print iteration number
     hour = hour + dss_var.timestep/60/60                                        # advance hour by one time step
 
-    opf.load(results)                                           # load solver resuts
-    if (results.solver.termination_condition == TerminationCondition.infeasible):   # catch any infeasible conditions
-        break                                                                       # terminate loop if infeasible
+    # opf.load(results)                                           # load solver resuts
+    # if (results.solver.termination_condition == TerminationCondition.infeasible):   # catch any infeasible conditions
+    #     break                                                                       # terminate loop if infeasible
 
 # -------------------------- Plot results------------------------------------------------------------#
 plot = 'yes'
 if plot == 'yes':
-    # print("The total fuel consumed was " + str(round(sum(Gen_Fuel), 2)) + " gallons")         # print total fuel consumption
-    # print("The generator wet stacked for " + str(round(sum(Wet_Stack)/len(Wet_Stack)*100, 2)) + " percent of time steps")
 
     fig, axs = plt.subplots(2,2)
     # plot active powers
