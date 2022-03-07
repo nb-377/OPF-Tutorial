@@ -767,10 +767,6 @@ while ES.SOC_updated > 0.05:
     print("Timestep " + str(it))                                               # print iteration number
     hour = hour + dss_var.timestep/60/60                                        # advance hour by one time step
 
-    # opf.load(results)                                           # load solver resuts
-    # if (results.solver.termination_condition == TerminationCondition.infeasible):   # catch any infeasible conditions
-    #     break                                                                       # terminate loop if infeasible
-
 # -------------------------- Plot results------------------------------------------------------------#
 plot = 'yes'
 if plot == 'yes':
@@ -862,3 +858,4 @@ if plot == 'yes':
     plt.title('ESS State of Charge')
     plt.show()
 
+# please take this and continue to go forward
