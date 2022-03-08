@@ -39,5 +39,6 @@ OPF_Tutorial_charging_git.py: This is the python file for the charging of the ES
 
 OPF_Tutorial_QSTS_git: This is the Python file for the QSTS simulation in Section IV D. 
 
-Note: 
-The loadshape.csv and Solar Data.csv files are required by OpenDSS for all simulations. Ensure to update local directories once installed.
+Notes: 
+1. The loadshape.csv and Solar Data.csv files are required by OpenDSS for all simulations. Ensure to update local directories once installed.
+2. When running the Python scripts, output windows will open in Notepad ++ with the results from OpenDSS. These windows contain the power flow results from OpenDSS and are used as a comparison to the OPF calculation results. You must close those windows in order for the Python script to continue the OPF calculations.
